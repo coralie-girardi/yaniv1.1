@@ -1,0 +1,56 @@
+<!-- --- TITLE --- -->
+<img src="public/img/addPlayer.svg" alt="logo représentant un utilisateur avec un signe plus">
+<h1>Ajouter des joueurs </h1>
+<!-- section Add Player  -->
+<?php if (isset($_SESSION["players"]["id"])): ?>
+    <section class="addPlayer">
+        <div class="playersInGame">
+            <h2>Joueurs dans la partie : </h2>
+            <?php if (empty($playersGame)): ?>
+                <p>Aucun joueur dans la partie actuellement</p>
+            <?php endif; ?>
+
+            <ul>
+                <?php foreach ($playersGame as $player): ?>
+                    <li>
+                        <?= $player['username'] ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+            <a href="index.php?route=addPoints&id=<?php if (isset($_GET['id'])): ?>
+<?= $_GET['id']; ?>
+  <?php else: ?>
+  <?= $_SESSION['idGame']; ?>
+                                  <?php endif; ?>" class="btn" id="btnPoints">Commencer à noter les points ! </a>
+        </div>
+        <!-- require Errors  -->
+        <div class=" formAddPlayer">
+
+            <?php include_once '_errors.phtml'; ?>
+            <!-- form AddPlayer -->
+            <form method="POST" action="index.php?route=addPlayerSubmission">
+                <label for="players_id">Choisissez les joueurs participants : </label>
+                <select name="players_id" required size="3">
+                    <?php foreach ($username as $lign): ?>
+                        <option value="<?= $lign['id'] ?>"> <?= $lign['username'] ?> </option>
+                    <?php endforeach; ?>
+                </select>
+                <input type="hidden" name="games_id" value="<?php if (isset($_GET['id'])):
+                    echo $_GET['id'];
+                else:
+                    echo $_SESSION['idGame'];
+                endif; ?>" />
+
+                <input type="submit" value="Ajouter ce joueur" class="btn" />
+
+
+
+            </form>
+        </div>
+
+
+    </section>
+<?php else: ?>
+    <!-- Require notConncted template if user is not connected  -->
+    <?php require_once '_notConnected.phtml' ?>
+<?php endif; ?>

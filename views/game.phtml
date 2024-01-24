@@ -1,0 +1,23 @@
+<!-- --- TITLE ---  --->
+<div id="titleGame">
+    <img src="public/img/create.svg" alt="logo representant un plus">
+    <h1>Creez votre partie!</h1>
+</div>
+<!-- --- SECTION GAME PAGE --- -->
+<section class="sectionGame">
+    <?php if (isset($_SESSION['players'])): ?>
+        <?php require_once '_errors.phtml'; ?>
+        <form method="POST" action="index.php?route=formNbrPoints" class="formGame">
+            <label for="nbrPoints">En combien de points se joue la partie ?</label>
+            <input type="number" name="nbrPoints" />
+
+            <input type="submit" value="Creer la partie" class="btn" />
+
+            <input type="hidden" name="token" value="<?= $token ?>">
+
+        </form>
+    </section>
+    <!-- ---- REQUIRE NOT CONNECTED --- -->
+<?php else: ?>
+    <?php require_once '_notConnected.phtml' ?>
+<?php endif; ?>

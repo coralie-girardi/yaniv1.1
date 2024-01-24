@@ -1,0 +1,57 @@
+<!-- Section register -->
+<section id="sectionRegister">
+    <img src="public\img\register.svg" alt="Logo Inscription">
+    <h1>Inscrivez-vous!</h1>
+    <!-- --- FORM --  -->
+    <form action="index.php?route=addUser" method="POST" id="formRegister">
+        <small>Champ obligatoire*</small>
+
+        <!-- REQUIRE ERRORS AND VALIDS MESSAGES  -->
+        <?php require_once '_errors.phtml'; ?>
+        <?php require_once '_valids.phtml'; ?>
+
+        <!-- input lastname -->
+
+        <label for="lastname">Entrez votre nom</label>
+        <input type="text" name="lastname" placeholder="nom" value=<?php if (isset($addUser['addFirstname']))
+            ; ?>>
+
+        <!-- input firstname -->
+
+        <label for="firstname">Entrez votre prénom</label>
+        <input type="text" name="firstname" placeholder="prenom" value=<?php if (isset($addUser['addLastname']))
+            ; ?>>
+
+
+        <!-- input username -->
+
+        <label for="username">Entrez un pseudo*</label>
+        <input type="text" name="username" size="30" placeholder="pseudo">
+
+
+        <!-- input email  -->
+
+        <label for="email">Entrez un email*</label>
+        <input type="text" name="email" size="50" placeholder="email">
+
+
+        <!-- input password  -->
+
+        <label for="password">Choisissez votre mot de passe*</label>
+        <input type="password" name="password" id="password_1" size="30" placeholder="mot de passse">
+
+
+        <!-- input password confirm  -->
+
+        <label for="password_confirm">Confirmez votre mot de passe*</label>
+        <input type="password" name="password_confirm" id="password_2" size="30"
+            placeholder="confirmer le mot de passe">
+
+
+
+        <!-- == TOKEN ==  -->
+        <input type="hidden" name="token" value="<?= $token ?>">
+        <!-- submit  -->
+        <input type="submit" value="S'inscrire" class="btn">
+
+    </form>

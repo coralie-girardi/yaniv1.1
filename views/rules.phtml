@@ -1,0 +1,95 @@
+<!-- --- TITLE --- -->
+<img src="public/img/rules.svg" alt="logo représentant un document avec une liste">
+<h1>Règles du jeu</h1>
+<!-- -- DIV INFOS OF THE GAME --- -->
+<div class="infosOfGame">
+    <h2>Le yaniv</h2>
+    <p>But du jeu : Finir la manche avec le moins de points possible</p>
+    <p>Matériel : 1 jeu de cartes, 2 Jeux si plus de joueurs </p>
+</div>
+<!-- --- SECTION RULES --- -->
+<section class="sectionRules">
+    <!-- div arragement  -->
+    <div class="arragement">
+        <h3>Disposition du jeu</h3>
+        <p>Chaque joueur a 7 Cartes , une carte est disposée face visible et le reste du jeu sert de pioche
+        </p>
+    </div>
+    <!-- div with Cards Values -->
+    <div class="cardValues">
+        <h3>Les valeurs des cartes</h3>
+        <ul>
+            <li>Les As valent 1</li>
+            <li>Les nombres du 2 au 10 valent leur valeur</li>
+            <li>Dames,Rois et Valets valent 10</li>
+            <li>Les jokers valent 0</li>
+        </ul>
+    </div>
+    <!-- div rules  -->
+    <div class="rules">
+        <h3>Règles du jeu </h3>
+        <ul>
+            <li> Tour à tour, les joueurs se défaussent d’une carte de leur main et pioche une carte de la pioche </li>
+            <li> Pour jouer,les joueurs ont trois choix :
+                <ul>
+                    <li> se débarasser d'une seule carte </li>
+                    <li> d'une suite</li>
+                    <li> de plusieurs cartes de mêmes valeurs</li>
+                </ul>
+            </li>
+            <li>
+                Une fois que le joueur à moins de 5 Points dans sa main, lors de son prochain tour il ne joue pas et dit
+                :
+                "Yaniv".
+            </li>
+        </ul>
+    </div>
+    <!-- div BONUS RULES  -->
+    <div class="bonusRules">
+        <h3>Règles Bonus</h3>
+        <ul>
+            <li> <span class="bold">Triple de Roi</span>: si vous posez 3 Roi, vous pouvez poser une carte noire de
+                votre jeu en plus.</li>
+            <li> <span class="bold">Joker</span> : Le suivant passe son tour
+            </li>
+            <li> <span class="bold">Double joker</span>: le suivant passe son tour et vous pouvez récupérer une carte de
+                la défausse.
+            </li>
+        </ul>
+    </div>
+    <!-- div added Rules  -->
+    <?php if (isset($_SESSION["players"]["id"])): ?>
+        <div class="addedlRules">
+            <!-- verification if Player ID is set -->
+
+            <h3>Règles Ajoutées</h3>
+            <!-- foreach for browse data array -->
+            <?php foreach ($rules as $rule): ?>
+                <ul>
+                    <li>
+                        <?= $rule['rules'] ?>
+                    </li>
+                </ul>
+            <?php endforeach; ?>
+        </div>
+
+
+    </section>
+    <!-- form for add rules  -->
+    <form action="index.php?route=AddRules" method="POST" class="formAddRules">
+        <!-- require errors template -->
+        <?php require_once '_errors.phtml'; ?>
+        <label for="rules">Ajouter une règle</label>
+        <input type="text" name="rules" />
+        <!-- == TOKEN ==  -->
+        <input type="hidden" name="token" value="<?= $token ?>">
+        <input type="submit" value="Ajouter une regle" class="btn" />
+    </form>
+    <!-- link UPDATE AND DELETE   -->
+    <a href="index.php?route=DisplayUpdateRules" class="btn" id="modifBtn">Modifier ou supprimer une de vos règles</a>
+
+
+<?php else: ?>
+    <!-- Require notConncted template if user is not connected  -->
+    <?php require_once '_notConnected.phtml' ?>
+<?php endif; ?>

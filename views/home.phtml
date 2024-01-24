@@ -1,0 +1,20 @@
+<!-- Title -->
+<img src="public/img/logo-complet.png" alt="Logo Yaniv avec quatres as" id="logoHome">
+<h1>Bienvenue sur le site Yaniv!</h1>
+<!-- ***Section (describe content of website)*** -->
+<section class="sectionHome">
+    <p> Vous trouverez ici plusieurs fonctionnalités pour accompagner le jeu de cartes : Yaniv </p>
+    <p>Vous trouverez un <strong>tableau qui additionneras les points de chaque manche</strong>!</p>
+    <a href="index.php?route=game" class="btn">Lancer une partie !</a>
+    <p> Les <strong>règles du jeu</strong> où vous pourrez également <strong>enregistrer vos propres règles</strong>
+    </p>
+    <a href="index.php?route=rules" class="btn">Règles du jeu</a>
+    <p>Vous pourrez retrouver et <strong>reprendre vos parties là où vous les avez laissées</strong></p>
+    <a href="index.php?route=gameInProcess" class="btn">Partie en cours</a>
+
+</section>
+<!-- ### condition to verify is user is log ### -->
+<?php if (!isset($_SESSION['players'])): ?>
+    <!-- require aside in case of user is not connected  -->
+    <?php require_once '_notConnected.phtml' ?>
+<?php endif; ?>

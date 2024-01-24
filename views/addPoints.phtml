@@ -1,0 +1,139 @@
+<!-- TITLE -->
+<img src="public/img/table.svg" alt="logo représentant un tableau des scores">
+<h1> Comptez vos points ! </h1>
+<?php if (!empty($game)): ?>
+<!-- GAME'S INFOS -->
+<section class="sectionGamePoints">
+    <div class="infosGamePoints">
+        <div class="infos">
+            <div class="column">
+                <p class="bold "> Date de création de partie : </p>
+                <p>
+                    <?= date('d/m/Y', strtotime($game[0]["date"])); ?>
+                </p>
+            </div>
+            <!-- points -->
+            <div class="infos">
+                <p class="bold">Nombre de points choisi pour la partie : </p>
+                <p id="nbrPoints">
+                    <?= $game[0]["nbrPoints"] ?>
+                </p>
+            </div>
+        </div>
+
+        <!-- players in game -->
+        <div class="infos">
+            <p class="bold">Joueurs:</p>
+            <!-- *** FOREACH FOR DISPLAYING PLAYERS IN GAME *** -->
+            <?php foreach ($game as $player): ?>
+            <p class="playerLign">
+                <?= $player["username"] ?>
+            </p>
+            <?php endforeach; ?>
+        </div>
+
+        <?php else: ?>
+        <p>Veuillez sélectionner les joueurs avant de noter les points</p>
+        <?php endif; ?>
+    </div>
+
+
+
+    <!-- REQUIRE TO DISPLAYING ERRORS  -->
+
+    <!-- CREATION ARRAY (table) -->
+    <table id="scores">
+        <!-- header array -->
+        <?php require_once "_errors.phtml"; ?>
+        <thead>
+            <tr>
+                <th>
+                    Joueurs
+                </th>
+                <th>
+                    Total
+                </th>
+
+            </tr>
+        </thead>
+        <!-- body's array -->
+        <tbody>
+            <!-- *** FOREACH (for each player)AND INIATILISATION METHOD TO DISPLAY SCORE *** -->
+            <?php foreach ($game as $player):
+                $data = [$player['players_id'], $_SESSION["idGame"]];
+                $model = new \Models\Game();
+                $points = $model->getScores($data); ?>
+            <tr>
+                <!-- username -->
+                <td class="bold">
+                    <?= $player['username']; ?>
+                </td>
+                <!-- INIT METHOD TO SUM TOTAL SCORE (SUM SCORE SQL IN MODEL GAME )-->
+
+                <!-- INIT METHOD TO GET RESULT OF SUM IN TABLE SQL  -->
+                <?php $data = [$player['players_id'], $_SESSION["idGame"]];
+                    $model = new \Models\Game();
+                    $totalScore = $model->getTotalScores($data);
+                    ?>
+                <!-- FOR LOOP TO BROWSE ARRAY DATA  -->
+                <?php for ($i = 0; $i < count($totalScore); $i++): ?>
+                <?php $totalPlayer = $totalScore[$i]['Max(totalPts)']; ?>
+                <td class="totalTd">
+                    <!-- DISPLAY TOTAL -->
+                    <?= $totalPlayer ?>
+                </td>
+                <?php endfor; ?>
+                <!-- DISPLAY POINTS ORDER BY MAIN -->
+                <?php for ($i = 0; $i < count($points); $i++): ?>
+                <td>
+                    <?= $points[$i]['points']; ?>
+                </td>
+                <?php endfor; ?>
+
+                <?php endforeach; ?>
+            </tr>
+        </tbody>
+    </table>
+</section>
+<section class="sectionFormPoints">
+    <!-- form Add Points  -->
+    <form method="POST" action="index.php?route=addPointsOfPlayers&idGame=
+                                                <?php if (
+                                                    isset($_GET["id"])
+                                                ): ?>
+                                                                                                                         <?= $_GET["id"] ?>
+                                                <?php else: ?>
+                                                                                                                    <?= $_SESSION["idGame"] ?>
+                       <?php endif; ?>">
+
+
+
+        <?php foreach ($game as $player): ?>
+        <?php $nbrPoints = $game[0]["nbrPoints"];
+            //    <!-- INIT METHOD TO GET RESULT OF SUM IN TABLE SQL  -->
+            $data = [$player['players_id'], $_SESSION["idGame"]];
+            $model = new \Models\Game();
+            $totalScore = $model->getTotalScores($data);
+            //   <!-- FOR LOOP TO BROWSE ARRAY DATA  -->
+            for ($i = 0; $i < count($totalScore); $i++):
+                $totalPlayer = $totalScore[$i]['Max(totalPts)'];
+            endfor;
+            ?>
+        <?php if ($totalPlayer < $nbrPoints): ?>
+        <div class="fieldPoints">
+            <label class="bold" for="username">
+                <?= $player["username"] ?>
+            </label>
+            <input type="number" name="<?= $player["players_id"] ?>" id="username" />
+        </div>
+
+        <?php else: ?>
+        <p>
+            <?= $player["username"] ?> : Joueur éliminé <i class="fa-solid fa-circle-xmark"></i>
+        </p>
+        <?php endif; ?>
+        <?php endforeach; ?>
+        <input type="submit" value="Ajouter les points" class="btn" id="getValuesBtn" />
+
+    </form>
+</section>

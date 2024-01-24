@@ -1,0 +1,535 @@
+@import url("https://fonts.googleapis.com/css2?family=Mynerve&family=Ubuntu:ital,wght@0,400;0,700;1,300&display=swap");
+/* init font size 62.5 on html to manage easier font size in rem*/
+/* general css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: white;
+  font-size: 1.6rem;
+  font-family: "Ubuntu", sans-serif;
+}
+
+main {
+  padding: 4rem 0 4rem 0;
+}
+
+/* class container */
+.container {
+  margin: 0 auto;
+  max-width: 1100px;
+  text-align: center;
+  border-radius: 2%;
+}
+
+/* ---- HEADER ----*/
+header {
+  background-color: #75daf6;
+  margin-bottom: 3rem;
+  /* MENU + MENU BURGER (RESPONSIVE) */
+  /* Menu */
+  /*  burger */
+}
+header nav {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #b3e7f5;
+}
+header nav a {
+  padding: 10px 20px;
+  margin: 0 2px;
+  text-decoration: none;
+  text-align: center;
+  color: #092b36;
+}
+header nav a:hover {
+  background-color: #577bac;
+  color: #092b36;
+}
+header #openMenu {
+  padding: 5px 8px;
+  color: #092b36;
+  background-color: #b3e7f5;
+  cursor: pointer;
+}
+header #openMenu:hover {
+  background-color: #577bac;
+  color: #092b36;
+}
+header #CmdMenu {
+  display: flex;
+  flex-direction: row;
+  background-color: #b3e7f5;
+  justify-content: space-between;
+  align-items: center;
+}
+header #CmdMenu #closeMenu {
+  display: none;
+}
+header #CmdMenu #closeMenu:hover {
+  background-color: #577bac;
+}
+header #FlexHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.5rem 0 2.5rem 0;
+  flex-direction: row;
+}
+header #FlexHeader #title {
+  margin-top: 10px;
+}
+header #FlexHeader #registerLogin {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+header #FlexHeader #registerLogin a {
+  text-decoration: none;
+  color: #092b36;
+}
+header #FlexHeader #registerLogin a:hover {
+  text-decoration: underline;
+}
+header #FlexHeader #registerLogin #register {
+  margin-bottom: 1rem;
+}
+header #ProfileHeader {
+  display: flex;
+  flex-direction: column;
+}
+header #ProfileHeader a {
+  text-decoration: none;
+  color: #092b36;
+}
+header #ProfileHeader div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+/* ======== BODY ======== */
+.bold {
+  font-weight: bold;
+}
+
+/* define button's style*/
+.btn {
+  box-sizing: content-box;
+  background: rgb(64, 154, 219);
+  padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid rgb(64, 154, 219);
+  text-decoration: none;
+  color: black;
+}
+.btn:hover {
+  background-color: #b3e7f5;
+}
+
+/* HOME */
+#logoHome {
+  width: 25rem;
+}
+
+.sectionHome {
+  margin-bottom: 5rem;
+}
+.sectionHome p {
+  margin: 3rem;
+}
+
+/* REQUIRE NOT CONNCTED */
+aside {
+  padding: 15px;
+  border: #d1d5d7 1px solid;
+  background-color: #d1d5d7;
+  border-radius: 10px;
+}
+aside .ifRegisterLogin {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+aside .ifRegisterLogin a {
+  text-decoration: none;
+  color: #092b36;
+  font-weight: bold;
+}
+aside .ifRegisterLogin a:hover {
+  text-decoration: underline;
+}
+aside .imgLocker {
+  margin: 1rem;
+}
+aside .ifRegister,
+aside .ifLogin {
+  display: flex;
+  flex-direction: column;
+  padding: 3px;
+}
+aside .ifRegister img,
+aside .ifLogin img {
+  width: 80px;
+}
+aside .ifLogin {
+  margin-left: 2rem;
+}
+
+/* LOGIN */
+#sectionLogin {
+  margin: 8rem 0 8rem 0;
+  border: #d1d5d7 1px solid;
+  background-color: #d1d5d7;
+  border-radius: 5px;
+  padding: 6rem 0 6rem 0;
+}
+#sectionLogin #formLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0 2rem 0;
+  font-weight: bold;
+}
+#sectionLogin #formLogin label {
+  margin: 5px 0 5px 0;
+}
+#sectionLogin #formLogin input {
+  margin: 5px 0 5px 0;
+}
+#sectionLogin #formLogin .InputLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* REGISTER */
+#sectionRegister {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 8rem 0 8rem 0;
+  border: #d1d5d7 1px solid;
+  background-color: #d1d5d7;
+  border-radius: 5px;
+  padding: 6rem 0 6rem 0;
+}
+#sectionRegister #formRegister {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0 2rem 0;
+  font-weight: bold;
+}
+#sectionRegister #formRegister .inputDiv {
+  margin: 1rem 0 1rem 0;
+}
+#sectionRegister #formRegister label {
+  display: block;
+  width: 35rem;
+  float: left;
+}
+#sectionRegister #formRegister input {
+  width: 25rem;
+}
+
+/* CREATE GAME */
+.sectionGame {
+  margin: 8rem;
+  text-align: center;
+}
+
+.formGame {
+  font-size: x-large;
+}
+
+/* GAME IN PROCESS */
+.sectionGameInProcess {
+  margin: 5rem 0 5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.divA {
+  color: #092b36;
+  display: flex;
+  flex-direction: column;
+}
+
+.partie {
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid #092b36;
+  border-radius: 5px;
+  width: 80%;
+  padding: 3rem;
+}
+.partie a {
+  text-decoration: none;
+  color: #092b36;
+  margin-bottom: 1rem;
+}
+.partie a:hover {
+  font-weight: bold;
+}
+
+.infosGame {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 1rem;
+}
+.infosGame p {
+  margin: 1rem 0 1rem 0;
+}
+
+/* ADD PLAYER PAGE*/
+.playersInGame {
+  border: 1px solid #d1d5d7;
+  border-radius: 5px;
+  padding: 2rem;
+  background-color: #d1d5d7;
+  margin: 2rem;
+}
+.playersInGame p {
+  margin: 2rem;
+}
+
+.formAddPlayer form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.formAddPlayer form label,
+.formAddPlayer form input,
+.formAddPlayer form select {
+  margin: 1rem;
+}
+.formAddPlayer form select {
+  border-radius: 5px;
+  padding: 0 1rem 0 1rem;
+}
+.formAddPlayer form input {
+  margin-bottom: 2rem;
+}
+
+/* Rules page*/
+.sectionRules {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.infosOfGame {
+  border: #d1d5d7 1px Solid;
+  border-radius: 5px;
+  background-color: #d1d5d7;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: center;
+  padding: 2rem;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+ul li {
+  margin: 1rem;
+}
+
+.arragement {
+  margin: 2rem;
+}
+.arragement p {
+  margin: 1rem;
+}
+
+.rules,
+.bonusRules,
+.addedRules,
+.cardValues {
+  margin: 2rem;
+}
+
+.formAddRules {
+  margin: 5rem;
+  border: 1px solid #d1d5d7;
+  background-color: #d1d5d7;
+  border-radius: 5px;
+  padding: 2rem;
+}
+
+/* MODIFY RULES */
+.sectionModify {
+  padding: 1rem;
+}
+
+.rule-btn {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 3rem;
+  margin: 1rem;
+}
+
+.rule-update {
+  margin: 5rem;
+}
+
+p {
+  margin: 1rem;
+}
+
+input {
+  margin: 2rem;
+}
+
+/* Profile page*/
+.sectionProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: #d1d5d7 1px solid;
+  border-radius: 5px;
+  background-color: #d1d5d7;
+  margin: 5rem;
+  padding: 2rem;
+}
+.sectionProfile p {
+  margin: 1rem;
+}
+
+/* ADD POINTS PAGE */
+.infosGamePoints {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d1d5d7;
+  border-radius: 5px;
+  background-color: #d1d5d7;
+  padding: 2rem;
+  margin: 2rem;
+}
+.infosGamePoints p {
+  margin: 1rem;
+}
+
+.sectionGamePoints {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+table,
+th,
+td {
+  border: 1px solid;
+  border-collapse: collapse;
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+table {
+  margin: 2rem;
+  font-family: "Mynerve", cursive;
+}
+
+.totalTd {
+  background-color: #add8e6;
+}
+
+/* FOOTER */
+footer {
+  padding: 2rem 0 2rem 0;
+  background-color: #75daf6;
+  text-align: center;
+}
+
+@media screen and (min-width: 480px) and (max-width: 860px) {
+  .container {
+    max-width: 650px;
+  }
+  .btn {
+    margin-top: 2rem;
+  }
+  input {
+    border: 1px solid black;
+  }
+}
+@media screen and (max-width: 480px) {
+  .container {
+    max-width: 480px;
+  }
+  input {
+    border: 1px solid black;
+  }
+  header {
+    margin: 0 auto;
+  }
+  header #card {
+    width: 20%;
+  }
+  header #title {
+    width: 30%;
+  }
+  aside .ifRegisterLogin {
+    flex-direction: column;
+    align-items: center;
+  }
+  .sectionProfile {
+    margin: 0;
+  }
+  .formAddRules {
+    margin: 1rem;
+  }
+  #modifBtn {
+    font-size: smaller;
+    margin-top: 1rem;
+  }
+  #btnPoints {
+    font-size: smaller;
+  }
+  .formGame {
+    font-size: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .rule-update {
+    margin: 0;
+  }
+  /* menu burger responsive (mobile  size) */
+  #menu {
+    flex-direction: column;
+  }
+  #menu #CmdMenu {
+    display: block;
+  }
+}

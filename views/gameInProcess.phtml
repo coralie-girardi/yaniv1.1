@@ -1,0 +1,40 @@
+<!-- ---- TITLE --- -->
+<img src="public/img/liste.svg" alt="logo représentant une liste">
+<h1>Liste de parties en cours</h1>
+<!-- --- SECTION GAME IN PROCESS -->
+<?php if (isset($_SESSION['players'])): ?>
+<section class="sectionGameInProcess">
+    <?php foreach ($list as $row): ?>
+
+    <div class="partie">
+        <div class="infosGame">
+            <p>Id de la partie :
+                <span class="bold">
+                    <?= $row['id'] ?>
+                </span>
+            </p>
+            <p> Date de création de la partie :
+                <span class="bold">
+                    <?= date('d/m/Y', strtotime($row['date']));
+                            ?>
+                </span>
+            </p>
+            <p> Nombre de points pour la partie :
+                <span class="bold">
+                    <?= $row['nbrPoints'] ?>
+                </span>
+            </p>
+        </div>
+
+        <div class="divA">
+            <a href='index.php?route=addPlayer&id=<?= $row['id'] ?>' class="btn">Ajouter un joueur </a>
+            <a href="index.php?route=addPoints&id=<?= $row['id'] ?>" class="btn">Continuer à noter les points </a>
+        </div>
+
+    </div>
+    <?php endforeach; ?>
+</section>
+
+<?php else: ?>
+<?php require_once '_notConnected.phtml' ?>
+<?php endif; ?>

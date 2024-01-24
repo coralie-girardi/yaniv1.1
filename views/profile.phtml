@@ -1,0 +1,37 @@
+<!-- ---- TITLE --- -->
+<img src="public/img/profile.svg" alt="Logo représentant une carte d'identité">
+<h1>Carte d'identité de l'utilisateur</h1>
+<!-- section PROFILE  -->
+<?php if (isset($_SESSION['players'])): ?>
+    <section class="sectionProfile">
+        <?php if (isset($_SESSION['players']['firstname']) && isset($_SESSION['players']['lastname'])): ?>
+            <p class="bold"> Nom :</p>
+            <p>
+                <?= $_SESSION['players']['firstname'] ?>
+            </p>
+
+
+            <p class="bold"> Prénom :</p>
+            <p>
+                <?= $_SESSION['players']['lastname'] ?>
+            </p>
+
+
+        <?php endif; ?>
+        <p class="bold"> Pseudo :</p>
+        <p>
+
+            <?= $_SESSION['players']['username'] ?>
+        </p>
+        <p class="bold">Email :</p>
+        <p>
+
+            <?= $_SESSION['players']['email'] ?>
+        </p>
+
+
+        <div>
+    </section>
+<?php else: ?>
+    <?php require_once '_notConnected.phtml' ?>
+<?php endif; ?>

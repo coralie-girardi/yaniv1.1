@@ -1,0 +1,34 @@
+<!-- Section LOGIN  -->
+<section id="sectionLogin">
+    <!-- -- TITLE --  -->
+    <img src="public/img/login.svg" alt="Logo de  connexion">
+    <h1>Se connecter</h1>
+    <!-- ---- FORM ---- -->
+
+    <form action="index.php?route=login" method="POST" id="formLogin">
+        <!-- --- REQUIRE ERRORS AND VALIDS MESSAGES ---  -->
+        <?php require_once('_errors.phtml'); ?>
+        <?php require_once('_valids.phtml'); ?>
+        <!-- Email input  -->
+        <div class="InputLabel">
+            <label for="email">Email</label>
+            <input type="text" name="email" size="30">
+        </div>
+        <!-- password input  -->
+        <div class="InputLabel">
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password" size="30" id="password_1">
+        </div>
+
+
+
+        <!-- ==TOKEN== -->
+        <input type="hidden" name="token" value="<?= $token ?>">
+        <!-- submit  -->
+
+        <input type="submit" value="Se connecter" class="btn">
+
+
+
+    </form>
+</section>

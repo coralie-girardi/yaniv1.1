@@ -1,0 +1,35 @@
+<!-- TITLE  -->
+<img src="public/img/modif.svg" alt="logo de modification">
+<h1>Modifier les règles personnalisées</h1>
+<section class="sectionModify">
+    <?php foreach ($rules as $rule): ?>
+    <div class="rule-update">
+
+
+        <div class="rule-btn">
+
+            <h3 class="rule-text">
+                <?= $rule['rules'] ?>
+            </h3>
+
+        </div>
+        <div>
+            <form action="index.php?route=ModifyRules" method="POST">
+                <input type="text" name="modifiedRule" placeholder="tapez pour modifier" id="modif">
+
+                <!-- == TOKEN ==  -->
+                <input type="hidden" name="token" value="<?= $token ?>">
+
+                <input type="submit" value="Modifier la rêgle" class="btn">
+
+                <input type="hidden" name="id_rules" value="<?= $rules[0]['id'] ?>" />
+            </form>
+            <?php if (!isset($_GET['id'])): ?>
+            <a href="index.php?route=DeleteRules&id=<?= $rule['id'] ?>" class="btn">Supprimer</a>
+            <?php else: ?>
+            <a href="index.php?route=DeleteRules&id=<?= $rule['id'] ?>" class="btn">Confirmer la supression</a>
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php endforeach; ?>
+</section>

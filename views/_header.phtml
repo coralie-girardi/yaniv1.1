@@ -1,0 +1,55 @@
+<!-- *** Header *** -->
+
+<div id="FlexHeader">
+    <img src="public/img/logo-carte.png" alt="Logo Jeu de cartes " id="card">
+    <img src="public/img/logo-titre.png" alt="Inscription Yaniv" id="title">
+
+    <!-- ### condition to verify is user is log ### -->
+    <?php if (isset($_SESSION['players'])): ?>
+    <div id="ProfileHeader">
+        <div>
+            <img src="public/img/idd.svg" alt="logo carte d'identité">
+            <p>
+                <?= $_SESSION['players']['username'] ?>
+            </p>
+        </div>
+
+        <a href="index.php?route=logout">Déconnexion</a>
+
+    </div>
+
+    <!-- div nav  -->
+
+
+    <!-- Register / login-->
+    <?php else: ?>
+    <div id="registerLogin">
+        <div id="register">
+            <i class="fa-solid fa-user"></i>
+            <a href="index.php?route=register">Inscription</a>
+        </div>
+        <div id="login">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            <a href="index.php?route=login">Connexion</a>
+        </div>
+    </div>
+
+    <?php endif; ?>
+</div>
+<div id="CmdMenu">
+    <span id="openMenu"> <i class="fa-solid fa-bars"></i> </span>
+    <span id="closeMenu"><i class="fa-solid fa-xmark fa-lg"></i></span>
+</div>
+
+<nav id="menu">
+
+    <a href="index.php?route=home">Accueil</a>
+    <a href="index.php?route=game">Lancer une partie</a>
+    <a href="index.php?route=gameInProcess">Parties en cours </a>
+    <a href="index.php?route=rules">Règles du jeu</a>
+    <a href="index.php?route=displayProfile">Profil</a>
+
+</nav>
+
+
+<!-- profile display-->
